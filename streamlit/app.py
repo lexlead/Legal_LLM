@@ -16,8 +16,6 @@ vertexai.init(project=PROJECT_ID, location=REGION)
 # Authentication
 credentials, project = default()
 
-credentials, project = default()
-
 # Load Gemini models (assuming GenerativeModel works as intended)
 try:
     generative_model_gemini_15_pro = GenerativeModel("gemini-1.5-pro-002")
@@ -32,18 +30,25 @@ models = {
     "Gemini 1.5 Flash": generative_model_gemini_15_non_pro
 }
 
-
-
 # Retry logic for generating content
 @retry(
-    stop=stop_after_attempt(7),  # Increase to 7 attempts
-    wait=wait_exponential(multiplier=1, min=5, max=120),  # Min wait 5s, exponential up to 120s
+    stop=stop_after_attempt(7),  # Retry up to 7 attempts
+    wait=wait_exponential(multiplier=1, min=5, max=120),  # Wait between retries, exponentially increasing up to 120 seconds
     retry=retry_if_exception_type(ResourceExhausted)
 )
 def generate_with_retry(model, prompt):
+    """
+    Generate content with retry logic in case of ResourceExhausted errors.
+
+    Args:
+        model (GenerativeModel): The AI model to use for generation.
+        prompt (str): The prompt to send to the model.
+
+    Returns:
+        str: The generated content or an error message if no valid response is found.
+    """
     response = model.generate_content([prompt])
     try:
-        # Extract the text from the candidates in the response
         if response and hasattr(response, 'candidates'):
             for candidate in response.candidates:
                 if hasattr(candidate.content, 'parts') and candidate.content.parts:
@@ -124,7 +129,6 @@ if st.button("Send"):
                     # Append the Google Search response to the conversation
                     st.session_state.conversation.append({"sender": "Google Search", "text": response_text})
 
-
             else:
                 # Generate response from the selected Gemini model
                 model = models[selected_model]
@@ -146,7 +150,7 @@ for message in reversed(st.session_state.conversation):
         st.markdown(
             f"""
             <div style="color: #007acc; font-weight: bold; margin-bottom: 10px;">
-                🧑‍💼 You: {message['text']}
+                🤝🏻 You: {message['text']}
             </div>
             """,
             unsafe_allow_html=True,
