@@ -1,0 +1,40 @@
+{
+    "questions": [ 
+        "Are licenses required to operate community or ambulatory currency exchanges? (yes or no)",
+        "Can a licensed currency exchange operate at multiple locations under the same license? (yes or no)",
+        "Is it mandatory for a single female borrower to have a cosigner if a single male borrower under similar conditions does not require one? (yes or no)",
+        "Can campground licenses be transferred to another operator? (yes or no)",
+        "Are campus media produced by students at state-sponsored higher education institutions considered public forums for student expression? (yes or no)",
+        "Are Illinois residents obligated to submit ACT or SAT scores when applying to public universities in the state?(yes or no)",
+        "Are institutions allowed to implement a more lenient transcript policy than the minimum requirements?(yes or no)",
+        "Does campus media expression made by students represent official campus policy or speech attributable to the institution?(yes or no)",
+        "Are state-sponsored institutions immune from lawsuits arising from expressions made in campus media, except for their own expression?(yes or no)",
+        "Can a member of the community mental health board be removed for absenteeism or misconduct?(yes or no)",
+        "Does the definition of tattooing include procedures like permanent makeup for lip coloring or eyeliner? (Yes or No)",
+        "Is the use of latex gloves by employees in food service establishments prohibited as of January 1, 2023?(Yes or No)",
+        "Are properties constructed after 1978 the primary focus of the CLEAR-WIN Program for addressing lead hazards?(Yes or No)",
+        "Are windows considered a lower risk for lead exposure compared to other housing components, according to the findings of the Illinois General Assembly?(Yes or No)",
+        "Are properties built before 1950 statistically more likely to contain lead-based paint hazards compared to newer buildings?"
+
+        
+    ],
+      "answers": [
+        "Yes.",
+        "No.",
+        "No.",
+        "No.",
+        "Yes",
+        "No.",
+        "Yes.",
+        "No.",
+        "Yes.",
+        "Yes.",
+        "Yes",
+        "Yes",
+        "No",
+        "No.",
+        "Yes."
+
+
+    ]
+  }
