@@ -25,6 +25,7 @@ Then, there are two ways to improve the model performance - RAG and Self-reflect
 Since we only have Illinois Law data in our RAG database, we use **Illinois Agent** to determine if we want to retrieve documents from RAG or Google Search.  
 
 ## Benchmark Analysis: 
+The benchmarking process evaluates the Illinois Statutes RAG system's performance using a custom set of 45 questions due to the absence of pre-existing Illinois-specific benchmarks. These questions focus on key areas such as education, health, and regulation, addressing policies, public safety, and compliance rules. The questions include 15 binary True/False statements and 30 short-answer fact-based queries designed to test the system's accuracy and efficiency. Analysis of the results shows that while the Simple RAG outperformed in binary question accuracy (80%), RAPTOR demonstrated superior overall performance for short-answer questions with an accuracy of 83.3% and significantly faster response times, highlighting its robustness and efficiency for handling complex queries. All benchmark-related code, questions, and results can be found in the Benchmark folder.
 
 ## Core Contributions:
 * Benchmark knowledge-Informed Adaptive RAG:
