@@ -47,7 +47,7 @@ jobs:
           run: gcloud auth configure-docker
 
         - name: Build Docker image
-          run: docker build -t gcr.io/mlds-cap-2024-lexlead-advisor/mlds-cap-2024-lexlead-advisor:$GITHUB_SHA .
+          run: docker build -t us-docker.pkg.dev/mlds-cap-2024-lexlead-advisor/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA .
 
         - name: Push Docker image
-          run: docker push gcr.io/mlds-cap-2024-lexlead-advisor/mlds-cap-2024-lexlead-advisor:$GITHUB_SHA
+          run: docker push us-docker.pkg.dev/mlds-cap-2024-lexlead-advisor/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA
