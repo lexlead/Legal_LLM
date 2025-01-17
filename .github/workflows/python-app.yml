@@ -37,11 +37,10 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v2
 
-        - name: Set up Cloud SDK
-          uses: google-github-actions/setup-gcloud@v1
+        - name: Authenticate to Google Cloud
+          uses: google-github-actions/auth@v1
           with:
-            version: 'latest'
-            service_account_key: ${{ secrets.GCP_KEY }}
+            credentials_json: ${{ secrets.GCP_KEY }}
 
         - name: Configure Docker
           run: gcloud auth configure-docker us-docker.pkg.dev --quiet
