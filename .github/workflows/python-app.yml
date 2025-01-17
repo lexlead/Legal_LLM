@@ -49,4 +49,5 @@ jobs:
           run: docker build -t us-docker.pkg.dev/mlds-cap-2024-lexlead-advisor/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA .
 
         - name: Push Docker image
+          if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
           run: docker push us-docker.pkg.dev/mlds-cap-2024-lexlead-advisor/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA
