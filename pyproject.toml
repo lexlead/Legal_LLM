@@ -1,0 +1,44 @@
+[project]
+name = "ai-spaces"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10, <3.12"
+dependencies = [
+    "async-lru>=2.0.4",
+    "cairosvg>=2.7.1",
+    "pydantic>=2.9.2",
+    "google-cloud-storage",
+    "langchain-openai>=0.3.0",
+    "langchain-core>=0.3.29",
+    "langgraph>=0.2.35",
+    "asgiref>=3.8.1",
+    "python-dotenv>=1.0.1",
+    "pydantic-settings>=2.7.0",
+    "langchainhub>=0.1.21",
+    "langchain>=0.3.14",
+    "streamlit",
+    "vertexai>=1.71.1",
+    "google-api-python-client",
+    "tenacity>=8.2.3,<9.0.0",
+    "chromadb~=0.6.1",
+    "google-auth",
+    "python-dotenv>=1.0.0",
+    "pydantic==2.9.2",
+    "numpy==1.24.2",
+    "altair==4.2.2",
+    "tiktoken",
+    "onnxruntime==1.18.1",
+]
+
+
+[tool.uv]
+default-groups = []
+
+
+[dependency-groups]
+dev = [
+    "flake8>=5,<6",
+    "docker>=6.0.0",
+    "click~=8.1.7",
+]
