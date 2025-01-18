@@ -1,3 +1,8 @@
+# Proposals:
+1) Google Search -> Select Relevant Pages -> Firecrawl integration
+2) 
+
+
 # Legal_LLM
 
 ## Our Project: Legal Advisory System

@@ -25,7 +25,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-install-project --no-editable
 
 
-COPY ./streamlit /app
+COPY streamlit_app /app
 
 EXPOSE 8501
 
