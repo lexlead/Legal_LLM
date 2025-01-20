@@ -1,5 +1,5 @@
 - Replace all OpenAI calls, embeddings, etc. with Gemini / GCP text-embedding models
-- Implement adaptive RAG
+- Implement adaptive RAG (must minimize hallucination)
   - results from Gemini 1.5 flash
   - results from vector store (currently IL statutes)
   - results from Google seearch
