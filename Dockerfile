@@ -26,7 +26,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 
 COPY streamlit_app /app
+COPY app.py /app/app.py
 
-EXPOSE 8501
+EXPOSE 8080
 
 CMD ["uvx", "streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
