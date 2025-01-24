@@ -76,7 +76,7 @@ jobs:
           pytest ./tests
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
     needs: docker
     env:
       DEPLOY_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
