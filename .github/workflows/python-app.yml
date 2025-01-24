@@ -80,6 +80,7 @@ jobs:
     needs: docker
     env:
       DEPLOY_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
+      SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
     steps:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
@@ -98,7 +99,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy ${{ vars.SERVICE_NAME }} \
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
             --image us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA \
             --region $REGION \
             --platform managed
