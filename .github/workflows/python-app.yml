@@ -54,7 +54,7 @@ jobs:
           run: docker build -t us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA .
 
         - name: Push Docker image
-          if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
+          if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
           run: docker push us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA
   test:
     runs-on: ubuntu-latest
