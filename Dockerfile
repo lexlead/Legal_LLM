@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.11-slim-bookworm
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
@@ -11,9 +11,9 @@ WORKDIR /app
 
 
 ENV UV_LINK_MODE=copy
-ENV UV_SYSTEM_PYTHON=1
 ENV UV_COMPILE_BYTECODE=1
 ARG UV_EXTRA_INDEX_URL
+
 
 COPY uv.lock /app/
 
@@ -24,6 +24,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     UV_EXTRA_INDEX_URL=${UV_EXTRA_INDEX_URL} \
     uv sync --frozen --no-install-project --no-editable
 
+RUN source .venv/bin/activate
 
 COPY streamlit_app /app
 COPY core /app
