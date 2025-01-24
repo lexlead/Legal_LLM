@@ -20,24 +20,33 @@ from core.vectorstores.chroma import load_vector_store
 from streamlit_app.components.chat import fill_messages_from_session, clear_chat_history
 
 st.set_page_config(
-    page_title="️",
-    page_icon="",
+    page_title="⚖️🏛️📜LexLead Law Advisor⚖️🎓🏛️",
+    page_icon="𓍝",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
 
+def display_question_evaluation(instance):
+    st.subheader("Query evaluation: ")
+    st.markdown(f"**Category:** {instance.category}")
+    st.markdown(f"**Is RAG Useful:** {instance.is_rag_useful}")
+    st.markdown(f"**Difficulty Response:** {instance.difficulty_response}")
+    st.markdown(f"**Reasoning:** {instance.reasoning_about_difficulty}")
+    st.markdown(f"**Is Illinois Law:** {instance.is_illinois_law}")
+
+
 def app():
     if not authenticate():
         return
-    st.write("#")
+    st.write("# ⚖️🏛️📜LexLead Law Advisor⚖️🎓🏛️")
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
     fill_messages_from_session()
-    if prompt := st.chat_input(placeholder=""):
+    if prompt := st.chat_input(placeholder="How to fill a inheritance form?"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.write(prompt)
-        with st.chat_message("assistant", avatar=""):
+        with st.chat_message("assistant", avatar="⚖️"):
             cfg = RunnableConfig(callbacks=[StreamlitCallbackHandler(st.container(), expand_new_thoughts=True)])
             answer = evaluate_question_chain.invoke({"question": prompt}, cfg)[0]["args"]
             evaluation = QuestionEvaluation.model_validate(answer)
