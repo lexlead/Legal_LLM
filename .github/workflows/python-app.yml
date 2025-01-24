@@ -92,5 +92,5 @@ jobs:
           gcloud run deploy $SERVICE_NAME \
             --image us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA \
             --region $REGION \
-            --platform managed
+            --platform managed \
             --set-env-vars ${{ secrets.APP_DEPLOY_ENV }}
