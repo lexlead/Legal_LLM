@@ -37,8 +37,6 @@ def display_question_evaluation(instance):
 
 
 def app():
-    if not authenticate():
-        return
     st.write("# ⚖️🏛️📜LexLead Law Advisor⚖️🎓🏛️")
     st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
     fill_messages_from_session()
