@@ -63,12 +63,10 @@ jobs:
     env:
       DEPLOY_ENV: production
     steps:
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
-          version: 'latest'
           credentials_json: ${{ secrets.GCP_KEY }}
-          project_id: $GCP_PROJECT_ID
 
       - name: Deploy to Cloud Run
         run: |
