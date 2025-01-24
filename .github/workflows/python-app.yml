@@ -93,4 +93,4 @@ jobs:
             --image us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA \
             --region $REGION \
             --platform managed \
-            --set-env-vars {{ secrets.APP_DEPLOY_ENV }}
+            --update-env-vars {{ secrets.APP_DEPLOY_ENV }}
