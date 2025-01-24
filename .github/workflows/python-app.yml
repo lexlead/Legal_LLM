@@ -3,7 +3,7 @@ name: Python application
 on:
   push:
   pull_request:
-
+  workflow_dispatch:
 
 env:
   GCP_PROJECT_ID: mlds-cap-2024-lexlead-advisor
@@ -61,6 +61,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker
     if: github.event_name == 'workflow_dispatch'
+    env:
+      DEPLOY_ENV: production
     steps:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
