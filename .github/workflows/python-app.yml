@@ -9,7 +9,6 @@ on:
 env:
   GCP_PROJECT_ID: mlds-cap-2024-lexlead-advisor
   REGION: us-central1
-  SERVICE_NAME: lexlead-streamlit-demo
 
 permissions:
   contents: read
@@ -80,7 +79,7 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     needs: docker
     env:
-      DEPLOY_ENV: production
+      DEPLOY_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
     steps:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
