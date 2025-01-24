@@ -24,9 +24,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     UV_EXTRA_INDEX_URL=${UV_EXTRA_INDEX_URL} \
     uv sync --frozen --no-install-project --no-editable
 
-COPY streamlit_app /app
-COPY core /app
-COPY rag /app
+COPY streamlit_app /app/streamlit_app
+COPY core /app/core
+COPY rag /app/rag
 COPY app.py /app/app.py
 
 EXPOSE 8080
