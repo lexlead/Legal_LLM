@@ -89,4 +89,8 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy $SERVICE_NAME --image us-docker.pkg.dev/mlds-cap-2024-lexlead-advisor/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA --region $REGION --platform managed
+          gcloud run deploy ${{ env.SERVICE_NAME }} \
+            --image us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA \
+            --region $REGION \
+            --platform managed
+            --set-env-vars {{ secrets.APP_DEPLOY_ENV }}
