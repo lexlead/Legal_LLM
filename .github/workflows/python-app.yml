@@ -5,6 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
 
+
 env:
   GCP_PROJECT_ID: mlds-cap-2024-lexlead-advisor
   REGION: us-central1
@@ -77,6 +78,7 @@ jobs:
           pytest ./tests
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     needs: docker
     env:
       DEPLOY_ENV: production
@@ -102,3 +104,4 @@ jobs:
             --image us-docker.pkg.dev/$GCP_PROJECT_ID/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA \
             --region $REGION \
             --platform managed
+            --set-env-vars {{ secrets.APP_DEPLOY_ENV }}

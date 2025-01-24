@@ -32,4 +32,4 @@ COPY app.py /app/app.py
 
 EXPOSE 8080
 
-CMD ["uvx", "streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
+CMD ["uv", "run", "streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]

@@ -43,9 +43,6 @@ dependencies = [
 ]
 
 
-[tool.uv]
-default-groups = []
-
 
 [dependency-groups]
 dev = [
