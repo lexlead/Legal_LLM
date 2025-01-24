@@ -1,15 +1,14 @@
 from langchain.chat_models.base import BaseChatModel
-from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.retrievers import BaseRetriever
+from langchain_core.runnables import RunnableLambda
 from langchain_core.runnables import RunnablePassthrough
-from langchain_core.documents import Document
 
 
 PROMPT = """
 Answer the question based only on the context provided and also provide
-summary about sources used
+summary about sources used and citations from this sources
 
 Context: {context}
 
@@ -32,8 +31,11 @@ def format_docs(docs):
 
 
 def build_search_chain(llm: BaseChatModel, search_retriever: BaseRetriever):
-    prompt = ChatPromptTemplate.from_template(PROMPT)
-    # search_retriever | format_docs
+    prompt = ChatPromptTemplate.from_messages(
+        [
+            ("human", PROMPT)
+        ]
+    )
     return (
         {"context": RunnableLambda(get_google_search_results), "question": RunnablePassthrough()}
         | prompt

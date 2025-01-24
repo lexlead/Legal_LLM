@@ -3,7 +3,7 @@ from typing import Final
 
 from langchain.chat_models.base import BaseChatModel
 from langchain.schema.runnable import Runnable
-from langchain_core.messages import ChatMessage
+from langchain_core.messages import HumanMessage
 from langchain_core.output_parsers import JsonOutputToolsParser
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
@@ -98,7 +98,7 @@ Question:
 
 def build_evaluate_question_chain(llm: BaseChatModel) -> Runnable:
     llm_with_tools = llm.bind_tools([QuestionEvaluation], tool_choice=QuestionEvaluation.__name__)
-    template = ChatPromptTemplate([ChatMessage(role="system", content=PROMPT)])
+    template = ChatPromptTemplate.from_messages([HumanMessage(content=PROMPT)])
     return template | llm_with_tools | JsonOutputToolsParser()
 
 

@@ -5,6 +5,7 @@ from langchain.schema.runnable import RunnablePassthrough, Runnable
 from langchain.vectorstores import VectorStore
 from langchain_core.prompts import ChatPromptTemplate
 
+
 RAG_PROMPT: ChatPromptTemplate = hub.pull("ragprompt")
 
 

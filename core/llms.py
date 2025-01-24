@@ -7,8 +7,8 @@ def get_openai_llm() -> BaseChatModel:
 
 
 def get_gemini_llm() -> BaseChatModel:
-    from langchain_google_vertexai import ChatVertexAI
-    return ChatVertexAI(
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    return ChatGoogleGenerativeAI(
         model="gemini-1.5-pro",
         temperature=0,
         max_tokens=None,
