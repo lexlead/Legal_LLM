@@ -26,6 +26,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 
 COPY streamlit_app /app
+COPY core /app
+COPY rag /app
 COPY app.py /app/app.py
 
 EXPOSE 8080
