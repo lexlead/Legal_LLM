@@ -24,8 +24,6 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     UV_EXTRA_INDEX_URL=${UV_EXTRA_INDEX_URL} \
     uv sync --frozen --no-install-project --no-editable
 
-RUN source .venv/bin/activate
-
 COPY streamlit_app /app
 COPY core /app
 COPY rag /app
