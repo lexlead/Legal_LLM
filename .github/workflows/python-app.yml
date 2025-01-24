@@ -67,8 +67,8 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
         with:
           version: 'latest'
-          service_account_key: ${{ secrets.GCP_KEY }}
-          project_id: your-gcp-project-id
+          credentials_json: ${{ secrets.GCP_KEY }}
+          project_id: $GCP_PROJECT_ID
 
       - name: Deploy to Cloud Run
         run: |
