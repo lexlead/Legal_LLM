@@ -60,7 +60,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: docker
-    if: github.event_name == 'workflow_dispatch'
     env:
       DEPLOY_ENV: production
     steps:
