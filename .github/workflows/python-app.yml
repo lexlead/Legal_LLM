@@ -59,7 +59,7 @@ jobs:
           run: docker push us-docker.pkg.dev/mlds-cap-2024-lexlead-advisor/nu-lexlead-demo/lexlead-streamlit-demo:$GITHUB_SHA
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: docker
     if: github.event_name == 'workflow_dispatch'
     steps:
       - name: Set up Cloud SDK
