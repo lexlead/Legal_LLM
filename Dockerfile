@@ -7,15 +7,12 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y g++ build-essential && rm -rf /var/lib/apt/lists/*
 
 
-WORKDIR /app
-
-
 ENV UV_LINK_MODE=copy
 ENV UV_COMPILE_BYTECODE=1
 ARG UV_EXTRA_INDEX_URL
 
 
-COPY uv.lock /app/
+COPY uv.lock uv.lock
 
 
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -24,10 +21,10 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     UV_EXTRA_INDEX_URL=${UV_EXTRA_INDEX_URL} \
     uv sync --frozen --no-install-project --no-editable
 
-COPY streamlit_app /app/streamlit_app
-COPY core /app/core
-COPY rag /app/rag
-COPY app.py /app/app.py
+COPY ./streamlit_app ./streamlit_app
+COPY ./core ./core
+COPY ./rag ./rag
+COPY ./app.py ./app.py
 
 EXPOSE 8080
 
